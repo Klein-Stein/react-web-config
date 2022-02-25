@@ -1,7 +1,10 @@
 const path = require('path');
 
 const webpack = require('webpack');
+const webConfig = require('@kleinstein/react-web-config/WebConfig');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const envPath = path.resolve(__dirname, '.env');
 
 const appDirectory = path.resolve(__dirname);
 const {presets} = require(`${appDirectory}/babel.config.js`);
@@ -16,7 +19,7 @@ const babelLoaderConfiguration = {
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
     path.resolve(__dirname, 'index.web.js'), // Entry to your application
-    path.resolve(__dirname, 'App.web.tsx'), // Change this to your main App file
+    path.resolve(__dirname, 'App.tsx'), // Change this to your main App file
     path.resolve(__dirname, 'src'),
     ...compileNodeModules,
   ],
@@ -50,6 +53,7 @@ const imageLoaderConfiguration = {
 };
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
     app: path.join(__dirname, 'index.web.js'),
   },
@@ -62,6 +66,7 @@ module.exports = {
     extensions: ['.web.tsx', '.web.ts', '.tsx', '.ts', '.web.js', '.js'],
     alias: {
       'react-native$': 'react-native-web',
+      'react-native-config': '@kleinstein/react-web-config',
     },
   },
   module: {
@@ -79,6 +84,7 @@ module.exports = {
     new webpack.DefinePlugin({
       // See: https://github.com/necolas/react-native-web/issues/349
       __DEV__: JSON.stringify(true),
+      __REACT_WEB_CONFIG__: JSON.stringify(webConfig(envPath)),
     }),
   ],
 };

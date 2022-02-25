@@ -12,6 +12,7 @@
     "web": "webpack serve --mode=development --config webpack.config.js"
   },
   "dependencies": {
+    "@kleinstein/react-web-config": "link:./../",
     "react": "17.0.2",
     "react-native": "0.67.3",
     "react-native-config": "^1.4.5",
