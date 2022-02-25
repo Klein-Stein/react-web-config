@@ -12,12 +12,12 @@ const schema = {
   additionalProperties: false,
 };
 
-const WebConfigPlugin = (options = {}) => {
+const WebConfig = (options = {}) => {
   validate(schema, options, {
-    name: 'React Web Native Plugin',
+    name: 'React Web Native',
     baseDataPath: 'options',
   });
   return config(options);
 };
 
-export default WebConfigPlugin;
+export default WebConfig;

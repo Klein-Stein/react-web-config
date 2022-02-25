@@ -1,7 +1,7 @@
 {
   "name": "@kleinstein/react-web-config",
   "version": "1.0.0",
-  "description": "A Babel plugin for react-native-config to support web",
+  "description": "An extension for react-native-config to support web",
   "homepage": "https://github.com/Klein-Stein/react-web-config",
   "keywords": [
     "react",
